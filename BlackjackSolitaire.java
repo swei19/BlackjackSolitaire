@@ -6,31 +6,42 @@ public class BlackjackSolitaire {
 	
 	public static void main(String[] args) {
 		int userInput;
+		int currentCardsPlaced  = 0;
 		Card currentCard;
+		boolean userEnd = false;
 		
-		/*
 		Deck deck = new Deck();
 		deck.initDeck();
 		deck.shuffleDeck();
 		
 		Board board =  new Board();
-		board.initBoard();
 		board.displayBoard();
 
-		currentCard = deck.drawCard();
+		
 		
 		Scanner userPrompt = new Scanner(System.in);
-		System.out.println("Insert Number between 0 to 20. You drew a " + currentCard.value);
 		
-		userInput = userPrompt.nextInt();
-		
-		board.placeCard(userInput,  currentCard);
-		board.displayBoard();
-		
-		
-		*/
-		
+		while (currentCardsPlaced != 16 & !userEnd) {
+			currentCard = deck.drawCard();
+			System.out.print("Insert Number between 1 to 20. You drew a " + currentCard.value + " ." + "Your Number: ");
+			
+			userInput = userPrompt.nextInt();
+			if (userInput == 0) {
+				userEnd = true;
+			} else {
+				board.placeCard(userInput,  currentCard);
+				board.displayBoard();
 	
+			}
+			
+
+			
+		}
+		
+		userPrompt.close();
+
+		
+		
 		
 		
 	}

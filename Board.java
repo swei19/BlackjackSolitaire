@@ -7,39 +7,35 @@ public class Board {
 		discard = new String[4];
 	}
 
-	public void initBoard() {
-
-		for (int i = 0; i < board.length; i++) {
-			discard[i] = " ";
-			for (int j = 0; j < board[i].length; j++) {
-
-				if (i > 1 && (j == 0 || j == 4)) {
-					continue;
-				} else {
-					//board[i][j] = new Card("", 10, "Hearts");
-				}
-
-			}
-		}
-	}
-
 	public void displayBoard() {
-
+		String whiteSpace = "";
+		
 		for (int i = 0; i < board.length; i++) {
 
 			for (int j = 0; j < board[i].length; j++) {
-				if (board[i][j] != null) {
-					System.out.print("[" + board[i][j] + "] ");
-
-				} else {
+				if (i > 1 && (j == 0 || j == 4)) {
 					System.out.print("    ");
-				}
+				} else if (board[i][j] != null) {
+					if (board[i][j].value < 10) {
+						whiteSpace = " ";
+					} else {
+						whiteSpace = "";
+					}
+					
+					System.out.print("[" + board[i][j].value + whiteSpace + "]");
+
+				} else
+					System.out.print("[  ]");
 			}
 
 			if (i == 1 || i == 2) {
-				System.out.print("   ");
+				System.out.print("      ");
 				for (int k = 0; k < 2; k++) {
-					System.out.print("[" + discard[i] + "]  ");
+					if (discard[i] != null) {
+						System.out.print("[" + discard[i] + whiteSpace + "]");
+					} else {
+						System.out.print("[  ]");
+					}
 				}
 			}
 
@@ -50,29 +46,30 @@ public class Board {
 
 	}
 
-	
 	public void placeCard(int position, Card card) {
-	
+
 		int row;
 		int col;
 		
+		position = position - 1;
+		
 		if (position > 4) {
-			row = 4;
-			col = position % 5;
+			row = position / 5;
+			col = position - 5 * (position / 5);
 		} else {
-			row = position;
-			col = 0;
+			row = 0;
+			col = position;
 		}
-		board[row][col] = card;		
-	}
-	
+		
+		board[row][col] = card;
 
+
+	}
 
 	public static void main(String[] args) {
 		Board currentBoard = new Board();
 
-		currentBoard.initBoard();
 		currentBoard.displayBoard();
 	}
-	
+
 }

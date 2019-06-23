@@ -39,8 +39,14 @@ public class Deck {
 		drawCounter += 1;
 		return deck[drawCounter];
 	}
-	
-	
+	/*
+	public static void main(String[] args) {
+		Deck deck = new Deck();
+		deck.initDeck();
+		System.out.println(deck.drawCounter);
+		deck.drawCard();
+		System.out.println(deck.drawCounter);
+	} */
 /*
 	public static void main(String[] args) {
 		Deck currentDeck = new Deck();
