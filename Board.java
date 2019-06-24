@@ -1,10 +1,10 @@
 public class Board {
 	Card[][] board;
-	String[] discard;
+	Card[] discard;
 
 	public Board() {
 		board = new Card[4][5];
-		discard = new String[4];
+		discard = new Card[4];
 	}
 
 	public void displayBoard() {
@@ -32,7 +32,7 @@ public class Board {
 				System.out.print("      ");
 				for (int k = 0; k < 2; k++) {
 					if (discard[i] != null) {
-						System.out.print("[" + discard[i] + whiteSpace + "]");
+						System.out.print("[" + discard[i].value + whiteSpace + "]");
 					} else {
 						System.out.print("[  ]");
 					}
@@ -51,7 +51,9 @@ public class Board {
 		int row;
 		int col;
 		
-		position = position - 1;
+		if (position >= 17) {
+			discard[position - 17] = card;
+		}
 		
 		if (position > 4) {
 			row = position / 5;
@@ -65,11 +67,14 @@ public class Board {
 
 
 	}
-
-	public static void main(String[] args) {
-		Board currentBoard = new Board();
-
-		currentBoard.displayBoard();
+	
+	public int cardsPlaced() {
+		return board.length;
 	}
+	
+	public int numOfDiscards() {
+		return discard.length;
+	}
+
 
 }
