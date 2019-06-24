@@ -7,8 +7,8 @@ public class Deck {
 	int drawCounter = -1;
 
 	public void initDeck() {
-		String[] cardsNames = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
-		String[] suits = { "Hearts", "Diamonds", "Spades", "Clubs" };
+		String[] cardsNames = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+		String[] suits = { "H", "D", "S", "C" };
 		
 		int counter = 0;
 		Card currentCard = null;
