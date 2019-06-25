@@ -43,9 +43,10 @@ public class BlackjackSolitaire {
 
 		}
 		userPrompt.close();
-		board.calculateRowScores();
-		board.calculateColScores();
-		System.out.println("You received a score of " + board.score);
+		Score score = new Score(board.board);
+		score.calculateRowScores();
+		score.calculateColScores();
+		System.out.println("You received a score of " + score.score);
 	}
 
 	public int getValidInt(Scanner userPrompt) {
