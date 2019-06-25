@@ -24,7 +24,7 @@ public class BlackjackSolitaire {
 
 		while (cardsPlaced < 16 & !userEnd) {
 			currentCard = deck.drawCard();
-			System.out.print("Insert Number between 1 to 20. You drew a " + currentCard.displayName + " ." + "Your Number: ");
+			System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. You drew a " + currentCard.displayName + " ." + "Your Number: ");
 
 			userInput = getValidInt(userPrompt);
 
@@ -54,17 +54,17 @@ public class BlackjackSolitaire {
 			if (userPrompt.hasNextInt()) {
 				int userInput = userPrompt.nextInt();
 				if (playedPositions.contains(userInput)) {
-					System.out.println("Please choose different spot la");
+					System.out.println("The spot you chosen has already been occupied. Please choose another thats empty.");
 
 				} else if (userInput < 0 || userInput > 20) {
-					System.out.println("NUMBER BETWEEN 0 and 20");
+					System.out.println("Please enter a number between 0 and 20.");
 
 				} else {
 					return userInput;
 				}
 
 			} else {
-				System.out.println("Number plx");
+				System.out.println("You did not enter a valid number. Please enter a number between 0 and 20.");
 				userPrompt.next();
 			}
 

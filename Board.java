@@ -9,36 +9,29 @@ public class Board {
 	}
 
 	public void displayBoard() {
-		String whiteSpace = "";
 		int discardCounter = 0;
 
 		for (int i = 0; i < board.length; i++) {
 
 			for (int j = 0; j < board[i].length; j++) {
 				if (i > 1 && (j == 0 || j == 4)) {
-					System.out.print("    ");
+					System.out.printf("%-4s", "");
 				} else if (board[i][j] != null) {
-					if (board[i][j].value < 10) {
-						whiteSpace = " ";
-					} else {
-						whiteSpace = "";
-					}
-
-					System.out.print("[" + board[i][j].displayName + whiteSpace + "]");
+					System.out.printf("%0$-4s", board[i][j].displayName);
 
 				} else
-					System.out.print("[  ]");
+					System.out.printf("%0$-4s", "---");
 			}
 
 			if (i == 1 || i == 2) {
-				System.out.print("      ");
+				System.out.printf("%-6s", "");
 				for (int j = 0; j < 2; j++) {
 					if (discard[discardCounter] != null) {
-						
-						System.out.print("[" + discard[discardCounter].displayName + " ]");
+
+						System.out.printf("%0$-4s", discard[discardCounter].displayName);
 						discardCounter += 1;
 					} else {
-						System.out.print("[  ]");
+						System.out.printf("%0$-4s", "---");
 					}
 				}
 			}
@@ -83,13 +76,9 @@ public class Board {
 	public int numOfDiscards() {
 		return discard.length;
 	}
-	
 
 	public int scoringRules(int currentCardsTotal) {
-		
-		
-		
-		
+
 		if (currentCardsTotal > 21) {
 			return 0;
 		} else if (currentCardsTotal == 21) {
@@ -106,30 +95,27 @@ public class Board {
 			return 0;
 		}
 	}
-	
+
 	public int aceScoringRules(int currentCardsTotal, int numRows) {
 		if (currentCardsTotal == 21 && numRows == 2) {
 			return 10;
 		} else {
 			int aceAsOneScore = scoringRules(currentCardsTotal);
 			int aceAsElevenScore = scoringRules(currentCardsTotal + 10);
-			
-			if (aceAsOneScore > aceAsElevenScore) {
+
+			if (aceAsOneScore >= aceAsElevenScore) {
 				return aceAsOneScore;
 			} else {
 				return aceAsElevenScore;
 			}
 		}
-		
-		
+
 	}
-	
 
 	public void calculateRowScores() {
-	
+
 		int rowWiseCardValues = 0;
 
-			
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				Card currentCard = board[i][j];
@@ -145,12 +131,9 @@ public class Board {
 		}
 
 	}
-	
-	
-	
+
 	public void calculateColScores() {
 		int columnWiseCardValues = 0;
-
 
 		boolean hasAce = false;
 		int numRows = 0;
@@ -165,22 +148,19 @@ public class Board {
 					numRows += 1;
 				}
 			}
-			
+
 			if (hasAce) {
 				score += aceScoringRules(columnWiseCardValues, numRows);
-				
+
 			} else {
 				score += scoringRules(columnWiseCardValues);
 			}
-			
+
 			hasAce = false;
 			columnWiseCardValues = 0;
 			numRows = 0;
 		}
 
 	}
-
-	
-	
 
 }
