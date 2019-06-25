@@ -1,30 +1,47 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+/*   Play Pile
+ *   1   2   3   4   5 
+                             Discard Pile
+	 6   7   8   9   10       17  18 
+
+        11  12  13            19  20 
+
+        14  15  16    
+ * 
+ */
+
 public class BlackjackSolitaire {
 	ArrayList<Integer> playedPositions = new ArrayList<Integer>();
 
 	public void play() {
 
 		int userInput;
-		Card currentCard;
-		
 		int cardsPlaced = 0;
-		
 		boolean userEnd = false;
-
+		Card currentCard;
+	
+		Board board = new Board();
+		board.displayBoard();
+		
 		Deck deck = new Deck();
 		deck.initDeck();
 		deck.shuffleDeck();
 
-		Board board = new Board();
-		board.displayBoard();
 
 		Scanner userPrompt = new Scanner(System.in);
 
 		while (cardsPlaced < 16 & !userEnd) {
 			currentCard = deck.drawCard();
-			System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. You drew a " + currentCard.displayName + " ." + "Your Number: ");
+			
+			if (cardsPlaced == 0) {
+				System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. Enter 0 to end game. You drew a "
+						+ currentCard.displayName + ". " + "Enter Your Number: ");
+			} else {
+				System.out.print("You drew a " + currentCard.displayName + ". Enter your number: ");
+			}
 
 			userInput = getValidInt(userPrompt);
 
@@ -33,20 +50,24 @@ public class BlackjackSolitaire {
 			} else {
 				board.placeCard(userInput, currentCard);
 				playedPositions.add(userInput);
+				
 				if (userInput < 17) {
 					cardsPlaced += 1;
-				} 
+				}
 				
-				
+				System.out.println("\n");
 				board.displayBoard();
 			}
-
 		}
 		userPrompt.close();
+		System.out.println("\n");
+		System.out.println("The game will now calculate your score...");
+		
 		Score score = new Score(board.board);
 		score.calculateRowScores();
 		score.calculateColScores();
-		System.out.println("You received a score of " + score.score);
+		System.out.println("You received a score of " + score.score + "!");
+		System.out.println("The game has now ended. Thank you for playing!");
 	}
 
 	public int getValidInt(Scanner userPrompt) {
@@ -72,7 +93,5 @@ public class BlackjackSolitaire {
 		}
 
 	}
-
-
 
 }

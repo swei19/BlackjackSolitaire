@@ -2,15 +2,11 @@
 public class Score {
 	Card[][] board;
 	int score;
-	
-	public Score (Card[][] board) {
+
+	public Score(Card[][] board) {
 		this.board = board;
 		this.score = 0;
 	}
-	
-	
-
-
 
 	public int scoringRules(int currentCardsTotal) {
 
@@ -77,7 +73,7 @@ public class Score {
 			for (int k = 0; k < board.length; k++) {
 				if (board[k][i] != null) {
 					columnWiseCardValues += board[k][i].value;
-					if (board[k][i].cardName == "A") {
+					if (board[k][i].cardName.equals("A")) {
 						hasAce = true;
 					}
 					numRows += 1;
@@ -97,6 +93,5 @@ public class Score {
 		}
 
 	}
-	
 
 }
