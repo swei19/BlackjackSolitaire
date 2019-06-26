@@ -14,7 +14,8 @@ public class Score {
 		this.score = 0;
 	}
 
-	//Calculate and return a score given the value sum of a given row or column of cards
+	// Calculate and return a score given the value sum of a given row or column of
+	// cards
 	public int scoringRules(int currentCardsTotal) {
 
 		if (currentCardsTotal > 21) {
@@ -34,17 +35,23 @@ public class Score {
 		}
 	}
 
-	//The method below generates the score in case an ace was used in a column or row
+	// The method below generates the score in case an ace was used in a column or
+	// row
 	public int aceScoringRules(int currentCardsTotal, int numRows) {
-		//If the value sum of the two rows is 21, then it can only be a blackjack.
-		if (currentCardsTotal == 11 && numRows == 2) { 
-			//If there is two spots, the only combinations to get 11 is an ace and a 10.
+		/*
+		 * If there are only two spots, the only combinations to get 11 is an ace and a
+		 * value 10 card. This actually means the card combination is a 21 and therefore
+		 * should receive a blackjack scoring.
+		 */
+		if (currentCardsTotal == 11 && numRows == 2) {
 			return 10;
 		} else {
-			//Return the higher of the score with Ace acting as a one and Ace acting as a 11.
-			
+			// Return the higher of the score with Ace acting as a one and Ace acting as a
+			// 11.
+
 			int aceAsOneScore = scoringRules(currentCardsTotal);
 			int aceAsElevenScore = scoringRules(currentCardsTotal + 10);
+			// Add 10 because 1 is already counted.
 
 			if (aceAsOneScore >= aceAsElevenScore) {
 				return aceAsOneScore;
@@ -54,9 +61,9 @@ public class Score {
 		}
 
 	}
-	
+
 	// The below method calculates the value sum of the rows or from horizontally.
-	
+
 	public void calculateRowScores() {
 
 		int rowWiseCardValues = 0;
@@ -67,12 +74,12 @@ public class Score {
 				Card currentCard = board[i][j];
 				if (currentCard != null) {
 					rowWiseCardValues += currentCard.getValue();
-					
+
 					if (board[i][j].getCardName().equals("A")) {
 						hasAce = true;
 					}
 				}
-					
+
 			}
 			if (hasAce) {
 				score += aceScoringRules(rowWiseCardValues, 4);
@@ -85,13 +92,12 @@ public class Score {
 		}
 
 	}
-	
+
 	/*
-	 * The below method calculates the value sum of the columns or vertically. It also keeps tracks
-	 * of the number of cards in that column so to ensure that the two cards column with a score of 21
-	 * is given the blackjack score.
+	 * The below method calculates the value sum of the columns or vertically. It
+	 * also keeps tracks of the number of cards in that column so to ensure that the
+	 * two cards column with a score of 21 is given the blackjack score.
 	 */
-	
 
 	public void calculateColScores() {
 		int columnWiseCardValues = 0;
@@ -107,7 +113,7 @@ public class Score {
 					if (board[k][i].getCardName().equals("A")) {
 						hasAce = true;
 					}
-					
+
 				}
 			}
 
