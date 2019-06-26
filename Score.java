@@ -87,7 +87,12 @@ public class Score {
 
 	}
 	
-	// The below method calculates the value sum of the columns or vertically.
+	/*
+	 * The below method calculates the value sum of the columns or vertically. It also keeps tracks
+	 * of the number of cards in that column so to ensure that the two cards column with a score of 21
+	 * is given the blackjack score.
+	 */
+	
 
 	public void calculateColScores() {
 		int columnWiseCardValues = 0;

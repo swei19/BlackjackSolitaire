@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /*
  * This class is the class that bring all the other classes together. 
- * It is responsible for interacting with the user and based on this user, provide direction to the other
+ * It is responsible for interacting with the user and based on this input, provide direction to the other
  * classes. It also ensures that the user does not enter an invalid input. 
  */
 
