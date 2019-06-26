@@ -37,7 +37,8 @@ public class Score {
 	//The method below generates the score in case an ace was used in a column or row
 	public int aceScoringRules(int currentCardsTotal, int numRows) {
 		//If the value sum of the two rows is 21, then it can only be a blackjack.
-		if (currentCardsTotal == 21 && numRows == 2) {
+		if (currentCardsTotal == 11 && numRows == 2) { 
+			//If there is two spots, the only combinations to get 11 is an ace and a 10.
 			return 10;
 		} else {
 			//Return the higher of the score with Ace acting as a one and Ace acting as a 11.
@@ -79,9 +80,7 @@ public class Score {
 			} else {
 				score += scoringRules(rowWiseCardValues);
 			}
-
-			score += scoringRules(rowWiseCardValues);
-
+			hasAce = false;
 			rowWiseCardValues = 0;
 		}
 
@@ -103,11 +102,12 @@ public class Score {
 		for (int i = 0; i < board[0].length; i++) {
 			for (int k = 0; k < board.length; k++) {
 				if (board[k][i] != null) {
+					numRows += 1;
 					columnWiseCardValues += board[k][i].getValue();
 					if (board[k][i].getCardName().equals("A")) {
 						hasAce = true;
 					}
-					numRows += 1;
+					
 				}
 			}
 

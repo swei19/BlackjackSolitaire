@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 // The Card class below creates the card object, along with getter methods for all instance variables.
 
 

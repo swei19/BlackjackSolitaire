@@ -13,16 +13,17 @@ import java.util.Collections;
 public class Deck {
 	private Card[] deck; //Array to store the deck of cards
 	private int drawCounter = -1; //Accesses the deck Array based on the number of cards already drawn
+	private final String[] cardsNames = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+	private final String[] suits = { "H", "D", "S", "C" };
 
 	//The initDeck methods creates the deck object using a loop. 
 	
 	public void initDeck() {
-		final String[] cardsNames = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-		final String[] suits = { "H", "D", "S", "C" };
-
+		
 		int deckCounter = 0;
-		Card currentCard = null;
 		int cardValue;
+		
+		Card currentCard;
 
 		this.deck = new Card[52]; //A deck contains 52 cards
 		
