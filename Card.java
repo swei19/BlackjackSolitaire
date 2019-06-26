@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
 public class Card {
-	public int value;
-	public String cardName;
-	public String suit;
-	public String displayName;
+	private int value;
+	private String cardName;
+	private String suit;
+	private String displayName;
 
 	public Card(String cardName, int value, String suit) {
 		this.cardName = cardName;
@@ -12,5 +12,24 @@ public class Card {
 		this.suit = suit;
 		this.displayName = cardName + suit;
 	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public String getCardName() {
+		return cardName;
+	}
+
+	public String getSuit() {
+		return suit;
+	}
+
+	
+	
 
 }

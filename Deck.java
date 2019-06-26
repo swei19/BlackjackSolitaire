@@ -2,12 +2,12 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Deck {
-	Card[] deck;
-	int drawCounter = -1;
+	private Card[] deck;
+	private int drawCounter = -1;
 
 	public void initDeck() {
-		String[] cardsNames = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-		String[] suits = { "H", "D", "S", "C" };
+		final String[] cardsNames = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+		final String[] suits = { "H", "D", "S", "C" };
 
 		int deckCounter = 0;
 		Card currentCard = null;

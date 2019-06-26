@@ -1,6 +1,6 @@
 public class Board {
-	Card[][] board;
-	Card[] discard;
+	private Card[][] board;
+	private Card[] discard;
 
 	public Board() {
 		board = new Card[4][5];
@@ -16,10 +16,10 @@ public class Board {
 				if (i > 1 && (j == 0 || j == 4)) {
 					System.out.printf("%-4s", "");
 				} else if (board[i][j] != null) {
-					System.out.printf("%0$-4s", board[i][j].displayName);
+					System.out.printf("%-4s", board[i][j].getDisplayName());
 
 				} else
-					System.out.printf("%0$-4s", "---");
+					System.out.printf("%-4s", "---");
 			}
 
 			if (i == 1 || i == 2) {
@@ -27,10 +27,10 @@ public class Board {
 				for (int j = 0; j < 2; j++) {
 					if (discard[discardCounter] != null) {
 
-						System.out.printf("%0$-4s", discard[discardCounter].displayName);
+						System.out.printf("%-4s", discard[discardCounter].getDisplayName());
 						discardCounter += 1;
 					} else {
-						System.out.printf("%0$-4s", "---");
+						System.out.printf("%-4s", "---");
 					}
 				}
 			}
@@ -67,5 +67,15 @@ public class Board {
 		board[row][col] = card;
 
 	}
+
+	public Card[][] getBoard() {
+		return board;
+	}
+
+
+	public Card[] getDiscard() {
+		return discard;
+	}
+
 
 }

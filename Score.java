@@ -1,7 +1,11 @@
 
 public class Score {
-	Card[][] board;
-	int score;
+	private Card[][] board;
+	private int score;
+
+	public int getScore() {
+		return score;
+	}
 
 	public Score(Card[][] board) {
 		this.board = board;
@@ -51,7 +55,7 @@ public class Score {
 			for (int j = 0; j < board[i].length; j++) {
 				Card currentCard = board[i][j];
 				if (currentCard != null) {
-					rowWiseCardValues += currentCard.value;
+					rowWiseCardValues += currentCard.getValue();
 				}
 
 			}
@@ -72,8 +76,8 @@ public class Score {
 		for (int i = 0; i < board[0].length; i++) {
 			for (int k = 0; k < board.length; k++) {
 				if (board[k][i] != null) {
-					columnWiseCardValues += board[k][i].value;
-					if (board[k][i].cardName.equals("A")) {
+					columnWiseCardValues += board[k][i].getValue();
+					if (board[k][i].getCardName().equals("A")) {
 						hasAce = true;
 					}
 					numRows += 1;

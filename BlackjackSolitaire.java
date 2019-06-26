@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*   Play Pile
  *   1   2   3   4   5 
-                             Discard Pile
+                            Discard Pile
 	 6   7   8   9   10       17  18 
 
         11  12  13            19  20 
@@ -15,12 +15,13 @@ import java.util.Scanner;
 
 public class BlackjackSolitaire {
 	ArrayList<Integer> playedPositions = new ArrayList<Integer>();
-
+	private int userInput;
+	private int cardsPlaced = 0;
+	private boolean userEnd = false;
+	
 	public void play() {
 
-		int userInput;
-		int cardsPlaced = 0;
-		boolean userEnd = false;
+
 		Card currentCard;
 	
 		Board board = new Board();
@@ -37,10 +38,10 @@ public class BlackjackSolitaire {
 			currentCard = deck.drawCard();
 			
 			if (cardsPlaced == 0) {
-				System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. Enter 0 to end game. You drew a "
-						+ currentCard.displayName + ". " + "Enter Your Number: ");
+				System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. Enter 0 to end game with finishing. You drew a "
+						+ currentCard.getDisplayName() + ". " + "Enter your number: ");
 			} else {
-				System.out.print("You drew a " + currentCard.displayName + ". Enter your number: ");
+				System.out.print("You drew a " + currentCard.getDisplayName() + ". Enter your number: ");
 			}
 
 			userInput = getValidInt(userPrompt);
@@ -63,10 +64,10 @@ public class BlackjackSolitaire {
 		System.out.println("\n");
 		System.out.println("The game will now calculate your score...");
 		
-		Score score = new Score(board.board);
+		Score score = new Score(board.getBoard());
 		score.calculateRowScores();
 		score.calculateColScores();
-		System.out.println("You received a score of " + score.score + "!");
+		System.out.println("You received a score of " + score.getScore() + "!");
 		System.out.println("The game has now ended. Thank you for playing!");
 	}
 
