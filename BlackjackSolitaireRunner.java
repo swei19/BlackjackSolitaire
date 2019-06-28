@@ -1,6 +1,5 @@
 
-/** When you first start this BlackjackSolitaire game, you will see empty spaces in the form of "---". 
-    Please refer below to see which spaces correspond to which number. 
+/** Please refer below to see which spaces correspond to which number. 
 
         Play Pile
      1   2   3   4   5 

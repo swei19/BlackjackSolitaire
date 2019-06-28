@@ -5,9 +5,6 @@ import java.util.Scanner;
  This class bring all the other classes together. 
  It is responsible for interacting with the user and based on this input, provide direction to the other
  classes. It also ensures that the user does not enter an invalid input. 
- 
- Please refer to the BlackjackSolitaireRunner class to see which spots in the board 
- corresponds to which number.
  */
 
 public class BlackjackSolitaire {
