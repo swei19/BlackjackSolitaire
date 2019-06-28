@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- This class is the class that bring all the other classes together. 
+ This class bring all the other classes together. 
  It is responsible for interacting with the user and based on this input, provide direction to the other
  classes. It also ensures that the user does not enter an invalid input. 
+ 
  Please refer to the BlackjackSolitaireRunner class to see which spots in the board 
  corresponds to which number.
  */
@@ -32,7 +33,7 @@ public class BlackjackSolitaire {
 		while (cardsPlaced < 16 & !userEnd) {
 			currentCard = deck.drawCard();
 
-			if (cardsPlaced == 0) { // When the game beings, provide extra instructions.
+			if (cardsPlaced == 0) { // When the game begins, provide extra instructions.
 				System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. "
 						         + "Enter 0 to end game prematurely. You drew a "
 								 + currentCard.getDisplayName() + ". " + "Enter your number: ");
@@ -57,12 +58,14 @@ public class BlackjackSolitaire {
 			}
 		}
 		userPrompt.close();
+		
 		System.out.println("\n");
 		System.out.println("The game will now calculate your score...");
 
 		Score score = new Score(board.getBoard());
 		score.calculateRowScores(); //
 		score.calculateColScores();
+		
 		System.out.println("You received a score of " + score.getScore() + "!");
 		System.out.println("The game has now ended. Thank you for playing!");
 	}

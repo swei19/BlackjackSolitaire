@@ -30,7 +30,7 @@ public class Score {
 		} else if (currentCardsTotal == 17) {
 			return 2;
 		} else {
-			return 0;
+			return 1;
 		}
 	}
 
@@ -61,8 +61,16 @@ public class Score {
 
 	}
 
-	// The below method calculates the value sum of the rows or horizontally.
-
+	/**
+	 *  The way to calculate the score is separated into two methods to ensure cleaner code and to handle the
+	 *  Ace card more appropriately. The below method, calculateRowScores calculate the player's score 
+	 *  by looping through each row and then for each row, loop through each 
+	 *  column (calculate score horizontally).
+	 *  
+	 *  The calculateColScore is the opposite, where it loops through each column and for each column, 
+	 *  each row.
+	 */
+	
 	public void calculateRowScores() {
 
 		int rowWiseCardValues = 0;
