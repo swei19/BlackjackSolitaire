@@ -27,32 +27,30 @@ public class BlackjackSolitaire {
 
 		Scanner userPrompt = new Scanner(System.in);
 
-		while (cardsPlaced < 16 & !userEnd) {
+		while (cardsPlaced < 16) {
 			currentCard = deck.drawCard();
 
 			if (cardsPlaced == 0) { // When the game begins, provide extra instructions.
 				System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. "
-						         + "Enter 0 to end game prematurely. You drew a "
-								 + currentCard.getDisplayName() + ". " + "Enter your number: ");
+						         + "You drew a " + currentCard.getDisplayName() + ". " 
+						         + "Enter your number: ");
 			} else {
 				System.out.print("You drew a " + currentCard.getDisplayName() + ". Enter your number: ");
 			}
 
 			userInput = getValidInt(userPrompt); // Ensures user input is valid
 
-			if (userInput == 0) { // If player enters 0, the game ends prematurely.
-				userEnd = true;
-			} else {
-				board.placeCard(userInput, currentCard);
-				playedPositions.add(userInput);
 
-				if (userInput < 17) {
-					cardsPlaced += 1; // Cards above 17 corresponds to the discard pile and do not count here.
-				}
+			board.placeCard(userInput, currentCard);
+			playedPositions.add(userInput);
 
-				System.out.println("\n"); // Ensure nice separation from previous board displays.
-				board.displayBoard();
+			if (userInput < 17) {
+				cardsPlaced += 1; // Cards above 17 corresponds to the discard pile and do not count here.
 			}
+
+			System.out.println("\n"); // Ensure nice separation from previous board displays.
+			board.displayBoard();
+			
 		}
 		userPrompt.close();
 		
@@ -82,8 +80,8 @@ public class BlackjackSolitaire {
 					System.out.println(
 							"The spot you chosen has already been occupied. Please choose another that's empty.");
 
-				} else if (userInput < 0 || userInput > 20) {
-					System.out.println("Please enter a number between 0 and 20.");
+				} else if (userInput <= 0 || userInput > 20) {
+					System.out.println("Please enter a number between 1 and 20.");
 
 				} else {
 					return userInput;
