@@ -14,8 +14,7 @@ public class Score {
 		this.score = 0;
 	}
 
-	// Calculate and return a score given the value sum of a given row or column of
-	// cards
+	// Calculate and return a score given the value sum of a given row or column of cards
 	public int scoringRules(int currentCardsTotal) {
 
 		if (currentCardsTotal > 21) {
@@ -35,19 +34,19 @@ public class Score {
 		}
 	}
 
-	// The method below generates the score in case an ace was used in a column or
-	// row
+	// The method below generates the score in case an ace was used in a column or row
+	
 	public int aceScoringRules(int currentCardsTotal, int numRows) {
-		/*
-		 * If there are only two spots, the only combinations to get 11 is an ace and a
-		 * value 10 card. This actually means the card combination is a 21 and therefore
-		 * should receive a blackjack scoring.
+		/**
+		  If there are only two spots, the only combinations to get 11 is an ace and a
+		  value 10 card. This actually means the card combination is a 21 and therefore
+		  should receive a blackjack scoring.
 		 */
 		if (currentCardsTotal == 11 && numRows == 2) {
 			return 10;
 		} else {
-			// Return the higher of the score with Ace acting as a one and Ace acting as a
-			// 11.
+			
+			// Return the higher of the score with Ace acting as a one and Ace acting as a 11.
 
 			int aceAsOneScore = scoringRules(currentCardsTotal);
 			int aceAsElevenScore = scoringRules(currentCardsTotal + 10);
@@ -62,7 +61,7 @@ public class Score {
 
 	}
 
-	// The below method calculates the value sum of the rows or from horizontally.
+	// The below method calculates the value sum of the rows or horizontally.
 
 	public void calculateRowScores() {
 
@@ -93,10 +92,10 @@ public class Score {
 
 	}
 
-	/*
-	 * The below method calculates the value sum of the columns or vertically. It
-	 * also keeps tracks of the number of cards in that column so to ensure that the
-	 * two cards column with a score of 21 is given the blackjack score.
+	/**
+	  The below method calculates the value sum of the columns or vertically. It
+	  also keeps tracks of the number of cards in that column so to ensure that the
+	  two cards column with a score of 21 is given the blackjack score.
 	 */
 
 	public void calculateColScores() {

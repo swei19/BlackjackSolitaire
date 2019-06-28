@@ -10,13 +10,13 @@ public class Board {
 		discard = new Card[4];
 	}
 
-	/*
-	 * The below method generates and displays the board.It uses a double loop to go
-	 * through each row and column and checks if there is a non-null value. If there
-	 * is, display that cards name otherwise display '---'. The discard pile is also
-	 * generated here in a similar fashion. String formatting is used to ensure that
-	 * numbers with more characters do not 'mis-align' the board by ensuring space
-	 * padding with left-justification
+	/**
+	  The below method generates and displays the board.It uses a double loop to go
+	  through each row and column and checks if there is a non-null value. If there
+	  is, display that cards name otherwise display '---'. The discard pile is also
+	  generated here in a similar fashion. String formatting is used to ensure that
+	  numbers with more characters do not 'mis-align' the board by ensuring space
+	  padding with left-justification
 	 */
 	public void displayBoard() {
 		int discardCounter = 0;
@@ -45,10 +45,10 @@ public class Board {
 					}
 				}
 			}
-			/*
-			 * The below if statement To ensure that the whole game can be seen without
-			 * scrolling up the console. Without the below, you would need to scroll up to
-			 * see the game due to the extra line.
+			/**
+			  The below if statement To ensure that the whole game can be seen without
+			  scrolling up the console. Without the below, you would need to scroll up to
+			  see the game due to the extra line.
 			 */
 			if (i < 3) {
 				System.out.println("\n");
@@ -57,11 +57,11 @@ public class Board {
 
 	}
 
-	/*
-	 * The below method places the card onto the board based on the board number
-	 * chosen by the user. As the board contains columns that are not used, a
-	 * formula below ensures that the card is placed at the right spot chosen by the
-	 * player.
+	/**
+	  The below method places the card onto the board based on the board number
+	  chosen by the user. As the board contains columns that are not used, a
+	  formula below ensures that the card is placed at the right spot chosen by the
+	  player.
 	 */
 	public void placeCard(int position, Card card) {
 

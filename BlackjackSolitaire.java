@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
- * This class is the class that bring all the other classes together. 
- * It is responsible for interacting with the user and based on this input, provide direction to the other
- * classes. It also ensures that the user does not enter an invalid input. 
+/**
+ This class is the class that bring all the other classes together. 
+ It is responsible for interacting with the user and based on this input, provide direction to the other
+ classes. It also ensures that the user does not enter an invalid input. 
+ Please refer to the BlackjackSolitaireRunner class to see which spots in the board 
+ corresponds to which number.
  */
 
 public class BlackjackSolitaire {
@@ -31,9 +33,9 @@ public class BlackjackSolitaire {
 			currentCard = deck.drawCard();
 
 			if (cardsPlaced == 0) { // When the game beings, provide extra instructions.
-				System.out.print(
-						"Enter a number between 1 and 20. Enter 17 to 20 to discard. Enter 0 to end game prematurely. You drew a "
-								+ currentCard.getDisplayName() + ". " + "Enter your number: ");
+				System.out.print("Enter a number between 1 and 20. Enter 17 to 20 to discard. "
+						         + "Enter 0 to end game prematurely. You drew a "
+								 + currentCard.getDisplayName() + ". " + "Enter your number: ");
 			} else {
 				System.out.print("You drew a " + currentCard.getDisplayName() + ". Enter your number: ");
 			}
@@ -47,7 +49,7 @@ public class BlackjackSolitaire {
 				playedPositions.add(userInput);
 
 				if (userInput < 17) {
-					cardsPlaced += 1; // Cards above 17 corresponds to the discard pile and not count here.
+					cardsPlaced += 1; // Cards above 17 corresponds to the discard pile and do not count here.
 				}
 
 				System.out.println("\n"); // Ensure nice separation from previous board displays.
@@ -65,10 +67,11 @@ public class BlackjackSolitaire {
 		System.out.println("The game has now ended. Thank you for playing!");
 	}
 
-	/*
-	 * The below method ensures three things: 1. Ensures that the number the player
-	 * chosen on the board is not already occupied. 2. Ensures that the player plays
-	 * a number between 0 and 20 3. Ensures that the player enters an integer
+	/**
+	  The below method ensures three things: 
+	  1. Ensures that the number the player chosen on the board is not already occupied. 
+	  2. Ensures that the player plays a number between 0 and 20 
+	  3. Ensures that the player enters an integer
 	 */
 	public int getValidInt(Scanner userPrompt) {
 
@@ -77,7 +80,7 @@ public class BlackjackSolitaire {
 				int userInput = userPrompt.nextInt();
 				if (playedPositions.contains(userInput)) {
 					System.out.println(
-							"The spot you chosen has already been occupied. Please choose another thats empty.");
+							"The spot you chosen has already been occupied. Please choose another that's empty.");
 
 				} else if (userInput < 0 || userInput > 20) {
 					System.out.println("Please enter a number between 0 and 20.");

@@ -1,12 +1,12 @@
 import java.util.Arrays;
 import java.util.Collections;
 
-/*
- * The Deck method creates the deck object, which works with the deck class. 
- *It creates all the cards that makes up a deck using a loop and then add it to an Array.
- *The Deck class also have the shuffleDeck method that randomizes index order of the items 
- *in the array and a drawCard method that accesses the array with drawCounter based on the number of 
- *cards already drawn
+/**
+ The Deck method creates the deck object, which works with the deck class. 
+ It creates all the cards that makes up a deck using a loop and then add it to an Array.
+ The Deck class also have the shuffleDeck method that randomizes index order of the items 
+ in the array and a drawCard method that accesses the array with drawCounter based on the number of 
+ cards already drawn
  */
 
 public class Deck {
@@ -43,7 +43,7 @@ public class Deck {
 	}
 
 	public void shuffleDeck() {
-		Collections.shuffle(Arrays.asList(deck)); // Randomizes the index order of the Array
+		Collections.shuffle(Arrays.asList(deck)); // Randomizes the index order of the items in the Array
 
 	}
 
