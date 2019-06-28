@@ -12,7 +12,6 @@ public class BlackjackSolitaire {
 	ArrayList<Integer> playedPositions = new ArrayList<Integer>(); // Keep tracks of used spots in the board
 	private int userInput;
 	private int cardsPlaced = 0; // Keeps track of the number of cards placed (excluding discard pile)
-	private boolean userEnd = false; // Provide an option to end the game prematurely
 
 	public void play() {
 
