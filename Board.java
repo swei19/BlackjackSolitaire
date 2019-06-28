@@ -4,6 +4,8 @@
 public class Board {
 	private Card[][] board;
 	private Card[] discard;
+	private int[] displayState = new int[16];
+	private int[] discardState = new int[4];
 
 	public Board() {
 		board = new Card[4][5];
@@ -18,38 +20,65 @@ public class Board {
 	  numbers with more characters do not 'mis-align' the board by ensuring space
 	  padding with left-justification.
 	 */
+	
+	/**
+	  initDisplayState helps display the state of the game and the board number when no card is
+	  placed at that position.
+	*/
+	
+	public void initDisplayState() {
+		for (int i = 1; i <= 20; i++) {
+			if (i < 17) {
+				displayState[i - 1] = i;
+			} else {
+				discardState[i - 17] = i;
+			}
+		}
+	}
+
+	
 	public void displayBoard() {
 		int discardCounter = 0;
+		int displayCounter = 0;
+		int discardDisplayCounter = 0;
+		
+		initDisplayState();
 
 		for (int i = 0; i < board.length; i++) {
 
 			for (int j = 0; j < board[i].length; j++) {
 				if (i > 1 && (j == 0 || j == 4)) {
 					System.out.printf("%-4s", "");
+					displayCounter -= 1;
 				} else if (board[i][j] != null) {
 					System.out.printf("%-4s", board[i][j].getDisplayName());
-
 				} else
-					System.out.printf("%-4s", "---");
+					System.out.printf("%-4s", displayState[displayCounter]);
+					displayCounter += 1;
 			}
 
 			if (i == 1 || i == 2) { // Generate the discard pile in the 2nd and 3rd row
 				System.out.printf("%-6s", "");
 				for (int j = 0; j < 2; j++) {
 					if (discard[discardCounter] != null) {
-
 						System.out.printf("%-4s", discard[discardCounter].getDisplayName());
-						discardCounter += 1;
+					
 					} else {
-						System.out.printf("%-4s", "---");
+						System.out.printf("%-4s", discardState[discardDisplayCounter]);
+			
 					}
+					discardCounter += 1;
+					discardDisplayCounter += 1;
 				}
+
 			}
+			
 			/**
 			  The below if statement ensures that the whole game can be seen without
 			  scrolling up the console. Without the below, you would need to scroll up to
 			  see the game due to the extra line.
 			 */
+			
 			if (i < 3) {
 				System.out.println("\n");
 			}
